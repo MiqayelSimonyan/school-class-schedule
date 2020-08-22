@@ -29,6 +29,11 @@ const Navigation = () => {
                         </Button>
                         : null
                 }
+                {
+                    <Button>
+                        <NavLink to="/classes" exact>classes</NavLink>
+                    </Button>
+                }
             </Grid>
             <Grid item xs={3} style={{ textAlign: 'right' }}>
                 <h3 className="username">{teacher?.username}</h3>

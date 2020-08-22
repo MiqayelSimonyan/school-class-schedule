@@ -33,9 +33,9 @@ require('./handlers/passport').init(app);
 
 const router = new Router();
 
-
 require('./routes/auth').init(router);
 require('./routes/teacher').init(router);
+require('./routes/classes').init(router);
 
 app.use(router.routes());
 

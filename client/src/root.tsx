@@ -15,6 +15,8 @@ import { isAuthSelector } from 'selectors/auth';
 
 import { IStoreIsAuth } from 'types/store/auth';
 import { getTeachers, getTeacher } from 'ducks/teacher';
+import Classes from 'components/classes';
+import ClassItem from 'components/classes/item';
 
 const useStyles = makeStyles({
     grid: {
@@ -45,6 +47,8 @@ const Root = () => {
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     <PrivateRoute path={['/teachers', '/teacher/:id']} component={Teacher} exact />
+                    <PrivateRoute path='/classes' component={Classes} exact />
+                    <PrivateRoute path='/classes/:id' component={ClassItem} exact />
                     <Route path="*" component={PageNotFound} />
                 </Switch>
             </Grid>

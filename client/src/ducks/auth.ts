@@ -109,7 +109,8 @@ export const loginRegisterSaga = function* (action: Required<IAddTeacherAction>)
         });
 
         yield put({ type: GET_TEACHER_SUCCESS, payload: data?.data });
-        history.push('/teachers');
+
+        history.push(data?.data?.role == 'superadmin' ? '/teachers' : '/classes');
     } catch (error) {
         yield put(setAuthError(error.response?.data));
     }

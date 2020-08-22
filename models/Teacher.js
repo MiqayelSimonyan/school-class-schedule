@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
+const Schema = mongoose.Schema;
+
 let publicFields = [
     '_id',
     'username',
@@ -21,6 +23,10 @@ const teacherSchema = new mongoose.Schema({
         default: 'user',
         enum: ['user', 'admin', 'superadmin']
     },
+    classes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Class'
+    }],
     passwordHash: {
         type: String,
         required: true
