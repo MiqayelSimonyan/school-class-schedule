@@ -41,13 +41,16 @@ const Classes = () => {
         <>
             <Typography variant="h5" className="header-message">Classes</Typography>
             <br />
-            <Button
-                onClick={onClick.bind(null, null)}
-                variant="contained"
-                color="primary"
-            >
-                Create
-            </Button>
+            {
+                user?.role !== 'superadmin' ? null :
+                    <Button
+                        onClick={onClick.bind(null, null)}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Create
+                    </Button>
+            }
             {
                 !classes?.length ? null :
                     <>

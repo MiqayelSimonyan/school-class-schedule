@@ -34,7 +34,7 @@ const classSchema = new mongoose.Schema({
     }
 });
 
-teacherSchema.plugin(beautifyUnique);
+classSchema.plugin(beautifyUnique);
 classSchema.statics.publicFields = publicFields;
 
 module.exports = mongoose.model('Class', classSchema);
