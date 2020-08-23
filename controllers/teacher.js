@@ -55,7 +55,7 @@ const updateTeacher = async (ctx, next) => {
             }
         );
 
-        if (!teacher) throw { message: 'Weacher Not Found' };
+        if (!teacher) throw { message: 'Teacher Not Found' };
         ctx.body = teacher.toObject();
     } catch (err) {
         next(err);

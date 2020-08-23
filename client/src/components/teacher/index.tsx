@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Grid, Typography } from '@material-ui/core';
 
 import { isAuthSelector } from 'selectors/auth';
-import { teacherSelector, teachersSelector, teachersLoadingSelector } from 'selectors/teacher';
+import { teachersSelector, teachersLoadingSelector } from 'selectors/teacher';
 
 import Teachers from './teachers';
 
@@ -25,7 +25,6 @@ type Props = RoutePropsType<IMatchParams, {}>;
 const Teacher: FunctionComponent<Props> = ({ match }) => {
     let teachersLoading: Array<ITeacher> = useSelector(teachersLoadingSelector);
     let teachers: Array<ITeacher> = useSelector(teachersSelector);
-    let teacher: ITeacher = useSelector(teacherSelector);
     let isAuth: IStoreIsAuth = useSelector(isAuthSelector);
 
     const classes = useStyles();

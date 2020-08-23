@@ -24,4 +24,55 @@ const getClassItem = async (ctx, next) => {
     }
 };
 
-module.exports = { getClasses, getClassItem };
+const createClass = async (ctx, next) => {
+    try {
+        const classItem = await Class.create(ctx.request.body);
+        ctx.body = classItem.toObject();
+    } catch (err) {
+        next(err);
+    };
+};
+
+const updateClass = async (ctx, next) => {
+    const id = ctx.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        ctx.throw(400, 'Invalid ObjectId');
+    };
+
+    try {
+        const classItem = await Class.findOneAndUpdate(
+            { _id: id },
+            ctx.request.body,
+            {
+                new: true,
+                useFindAndModify: false,
+            }
+        );
+
+        if (!classItem) throw { message: 'Class Not Found' };
+        ctx.body = classItem.toObject();
+    } catch (err) {
+        next(err);
+    }
+};
+
+const deleteClass = async (ctx, next) => {
+    const id = ctx.params.id;
+
+    try {
+        await Class.remove({ _id: id });
+
+        ctx.body = { success: true };
+    } catch (err) {
+        next(err);
+    }
+};
+
+module.exports = {
+    getClasses,
+    getClassItem,
+    createClass,
+    updateClass,
+    deleteClass
+};
