@@ -32,16 +32,16 @@ const Modal: FunctionComponent<Props> = ({ open, setOpen, mode, activeClass }) =
     const action = () => {
         let type = mode.trim().toLowerCase();
 
-        if (changedClassName || type == 'delete') {
+        if (changedClassName || type === 'delete') {
             if (type == 'create') {
                 dispatch(
                     createClassItemAction({ name: changedClassName })
                 );
-            } else if (type == 'edit' && activeClass?._id) {
+            } else if (type === 'edit' && activeClass?._id) {
                 dispatch(
                     updateClassItemAction({ _id: activeClass._id, name: changedClassName })
                 );
-            } else if (type == 'delete' && activeClass?._id) {
+            } else if (type === 'delete' && activeClass?._id) {
                 dispatch(
                     deleteClassItemAction(activeClass._id)
                 );
